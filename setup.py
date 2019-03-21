@@ -9,7 +9,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="overcast_parser",
-    version="0.0.1",
+    version="0.0.2",
     description="Overcast podcast link parser especially for pythonista.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -28,7 +28,17 @@ setup(
         "Programming Language :: Python :: 3.6",
     ],
     install_requires=["beautifulsoup4", "requests"],
-    keywords=["podcast", "parser", "rss", "feed", "pythonista", "overcast", "shortcuts", "ios"],
+    extras_require={"dev": ["black", "pythonista-stubs"]},
+    keywords=[
+        "podcast",
+        "parser",
+        "rss",
+        "feed",
+        "pythonista",
+        "overcast",
+        "shortcuts",
+        "ios",
+    ],
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
     project_urls={
         "Bug Reports": "https://github.com/hbmartin/overcast_parser/issues",

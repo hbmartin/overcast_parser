@@ -4,7 +4,6 @@ python:
     - "3.6"
 
 script:
-    - pip install .
-    - pip install black
+    - pip install .[dev]
     - black --check overcast_parser/
     - mypy overcast_parser/
