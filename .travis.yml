@@ -6,4 +6,4 @@ python:
 script:
     - pip install .[dev]
     - black --check overcast_parser/
-    - mypy overcast_parser/
+#    - mypy overcast_parser/
