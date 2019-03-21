@@ -1,14 +1,25 @@
 # Overcast URL to podcast information
+![PyPI](https://img.shields.io/pypi/v/overcast_parser.svg)
+![GitHub issues](https://img.shields.io/github/issues-raw/hbmartin/overcast_parser.svg)
+![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
+[![Build Status](https://travis-ci.com/hbmartin/overcast_parser.svg?branch=master)](https://travis-ci.com/hbmartin/overcast_parser)
+
 Python library to obtain RSS feed URL from Overcast link, built especially for Pythonista
 
 ## Installation / Upgrade
 
+This can be installed directly in Pythonista with [StaSh](https://github.com/ywangd/stash)
+
 ```
 pip install overcast_parser --upgrade
 ```
+Or copy this entire repo to the Pythonista3 iCloud directory
+
 
 ## Usage
+
 #### See demo.py for full pythonista script
+
 ```
 from overcast_parser.OvercastParser import OvercastParser
 parser = OvercastParser()
