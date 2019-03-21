@@ -6,5 +6,5 @@ python:
 script:
     - pip install .
     - pip install black
-    - black --check stubs/
-    - mypy stubs/
+    - black --check overcast_parser/
+    - mypy overcast_parser/
