@@ -39,6 +39,7 @@ demo.py is meant to be used from either the share extension or from an iOS Short
 
 You can [download a shortcut here](https://www.icloud.com/shortcuts/942bc3f2f69747429960fefdde4ccb2c) or create one like:
 ![shortcut](shortcut.png)
+
 Where the final URL block is like (adjusted for your path or removing root=icloud)
 ```
 pythonista3://overcast_parser/demo.py?action=run&root=icloud&args=URL Encoded Text
