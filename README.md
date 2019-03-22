@@ -8,12 +8,14 @@ Python library to obtain RSS feed URL from Overcast link, built especially for P
 
 ## Installation / Upgrade
 
-This can be installed directly in Pythonista with [StaSh](https://github.com/ywangd/stash)
+This can be installed one of two ways:
+
+First, it can be installed directly in Pythonista with [StaSh](https://github.com/ywangd/stash)
 
 ```
-pip install overcast_parser --upgrade
+pip install overcast_parser
 ```
-Or copy this entire repo to the Pythonista3 iCloud directory
+Alternately, you can copy this entire repo to Pythonista and start immediately editing demo.py. This can be done either with a git tool in Pythonista or, on your Mac, copying this to the Pythonista3 iCloud directory.
 
 
 ## Usage
@@ -22,21 +24,26 @@ Or copy this entire repo to the Pythonista3 iCloud directory
 
 ```
 from overcast_parser.OvercastParser import OvercastParser
+
+
 parser = OvercastParser()
+
 data = requests.get(overcast_url).text
-parser.feed(data)
-(itunes_id, stream_url, overcast_id, title) = parser.close()
-print(title)
+
+(itunes_id, stream_url, overcast_id, title) = parser.parse_overcast(data)
 ```
 
 ## Built With
 
 * [itunes_podcast_rss](https://github.com/wotaen/itunes_podcast_rss) - obtain RSS feed URL from iTunes link
-* [pyPodcastParser](https://github.com/jrigden/pyPodcastParser) - parsing podcast RSS feeds
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Planned improvements
+* Proper error catching / throwing
+* Consistent API between Overcast parsing, iTunes parsing, and RSS parsing
 
 ### Code Formatting
 

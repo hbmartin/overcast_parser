@@ -2,6 +2,8 @@ import reminders
 
 CALENDAR = "Overcast"
 
+"""Helper class the provides easy access to a single list of reminders"""
+
 
 class Reminders:
     def __init__(self):

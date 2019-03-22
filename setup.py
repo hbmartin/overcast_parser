@@ -27,7 +27,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
     ],
-    install_requires=["beautifulsoup4", "requests"],
+    install_requires=["podcastparser", "requests"],
     extras_require={"dev": ["black", "pythonista-stubs"]},
     keywords=[
         "podcast",
@@ -42,6 +42,5 @@ setup(
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
     project_urls={
         "Bug Reports": "https://github.com/hbmartin/overcast_parser/issues",
-        "Source": "https://github.com/hbmartin/overcast_parser/",
     },
 )

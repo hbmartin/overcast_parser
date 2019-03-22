@@ -3,6 +3,9 @@
 """
 
 import json
+import urllib
+
+import podcastparser
 import requests
 import appex
 import console
@@ -10,14 +13,15 @@ import sys
 import webbrowser
 from urllib.parse import unquote
 
+from overcast_parser import utils
 from overcast_parser.OvercastParser import OvercastParser
-from overcast_parser.itunes_podcast_rss.extract import extract_feed_id
-from overcast_parser.pyPodcastParser.Podcast import Podcast
+from overcast_parser.itunes_podcast_rss import extract_feed_id
 from overcast_parser.stores.Reminders import Reminders
 
 
 def main():
     console.clear()
+
     url = None
     if appex.is_running_extension():
         url = appex.get_url()
@@ -43,10 +47,10 @@ def main():
     feed_url = extract_feed_id(itunes_id)
     print(feed_url)
 
-    response = requests.get(feed_url)
-    podcast = Podcast(response.content)
-    print(podcast)
-    item = podcast.find_item(title, stream_url)
+    podcast = podcastparser.parse(feed_url, urllib.request.urlopen(feed_url))
+    print(podcast["link"])
+
+    item = utils.find_episode(podcast["episodes"], title, stream_url)
     print(item)
 
     result = {
@@ -54,15 +58,15 @@ def main():
         "itunes_channel_id": itunes_id,
         "enclosure_url": stream_url,
         "overcast_id": overcast_id,
-        "guid": item.guid,
-        "itunes_new_feed_url": podcast.itunes_new_feed_url,
-        "channel_link": podcast.link,
-        "duration": item.itunes_duration,
-        "published_time": item.time_published,
+        "guid": item["guid"],
+        "channel_link": podcast["link"],
+        "duration": item["total_time"],
+        "published_time": item["published"],
     }
 
     reminders.add(json.dumps(result))
-    print("check guid already exists")
+    print("Added to reminders")
+
     console.hide_activity()
     webbrowser.open("overcast://")
 

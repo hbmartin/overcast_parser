@@ -51,6 +51,7 @@ class OvercastParser(HTMLParser):
         tmp_title = self.title
 
         self.reset()
+
         self.itunes_id = None
         self.stream_url = None
         self.overcast_id = None
@@ -59,5 +60,6 @@ class OvercastParser(HTMLParser):
 
         return tmp_itunes, tmp_stream_url, tmp_overcast, tmp_title
 
-    def error(self, message):
-        print(message)
+    def parse_overcast(self, data):
+        self.feed(data)
+        return self.close()
