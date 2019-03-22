@@ -14,7 +14,7 @@ import webbrowser
 from urllib.parse import unquote
 
 from overcast_parser import utils
-from overcast_parser.OvercastParser import OvercastParser
+from overcast_parser import OvercastParser
 from overcast_parser.itunes_podcast_rss import extract_feed_id
 from overcast_parser.stores.Reminders import Reminders
 
