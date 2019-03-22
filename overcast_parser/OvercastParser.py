@@ -60,6 +60,9 @@ class OvercastParser(HTMLParser):
 
         return tmp_itunes, tmp_stream_url, tmp_overcast, tmp_title
 
+    def error(self, message):
+        raise Exception(message)
+
     def parse_overcast(self, data):
         self.feed(data)
         return self.close()

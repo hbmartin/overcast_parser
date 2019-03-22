@@ -67,4 +67,5 @@ def extract_feed_id(feed_id):
 
 
 def extract_feed_url(url):
-    return extract_feed_id(id_from_url(url))
+    feed_id = id_from_url(url)
+    return extract_feed_id(feed_id)
