@@ -30,3 +30,4 @@ jobs:
       with:
         options: "--check --verbose"
     - run: pyroma .
+    - run: python -m unittest -v tests/test.py

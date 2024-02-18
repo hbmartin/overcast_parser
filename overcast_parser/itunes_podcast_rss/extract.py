@@ -1,3 +1,4 @@
+# ruff: noqa: EM101,TRY003
 """(c) 2016 Michal Holub / wotaen released under MIT License.
 
 Source: https://github.com/wotaen/itunes_podcast_rss
@@ -27,7 +28,7 @@ def lookup_id(podcast_id: int) -> dict:
     return json.loads(response.content.decode("utf-8"))
 
 
-def feed_url(itunes_lookup_response: dict) -> str:
+def _feed_url(itunes_lookup_response: dict) -> str:
     """Return feed URL from the itunes lookup response."""
     if len(itunes_lookup_response.get("results")) == 0:
         raise LookupError("iTunes response has no results")
@@ -39,7 +40,7 @@ def feed_url(itunes_lookup_response: dict) -> str:
 
 def extract_feed_id(feed_id: int) -> str:
     response = lookup_id(feed_id)
-    return feed_url(response)
+    return _feed_url(response)
 
 
 def extract_feed_url(url: str) -> str:

@@ -17,8 +17,9 @@ def main() -> None:
     parser = OvercastParser()
 
     data = requests.get(url).text
+
     parser.feed(data)
-    (itunes_id, stream_url, overcast_id, title) = parser.close()
+    (itunes_id, stream_url, overcast_id, title, feed_url) = parser.close()
     print(title)
 
     feed_url = extract_feed_id(itunes_id)

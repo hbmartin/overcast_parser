@@ -6,7 +6,7 @@ from os import path
 import podcastparser
 
 from overcast_parser import utils
-from overcast_parser.itunes_podcast_rss.extract import feed_url
+from overcast_parser.itunes_podcast_rss.extract import _feed_url
 from overcast_parser.overcast_parser import OvercastParser
 
 here = path.dirname(__file__)
@@ -19,12 +19,29 @@ class TestOvercastParser(unittest.TestCase):
         with open(path.join(here, "data", "overcast.htm")) as f:
             data = f.read()
 
-        (itunes_id, stream_url, overcast_id, title) = parser.parse_overcast(data)
+        (
+            itunes_id,
+            stream_url,
+            overcast_id,
+            ep_title,
+            feed_url,
+        ) = parser.parse_overcast(data)
 
-        self.assertEqual(itunes_id, 1042433083)
-        self.assertEqual(stream_url, "https://traffic.megaphone.fm/VMP2975209749.mp3")
-        self.assertEqual(overcast_id, 367482639706188)
-        self.assertEqual(title, "The reparations primary")
+        self.assertEqual(itunes_id, 1602541473)
+        self.assertEqual(
+            stream_url,
+            "https://chtbl.com/track/39E17/podtrac.com/pts/redirect.mp3/"
+            "pdrl.fm/060f2a/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/"
+            "32c25e85-1667-4acb-99fd-ae3c0021f33e/299405db-0bc5-4924-8c60-b10f0154960a/"
+            "audio.mp3?utm_source=Podcast&in_playlist=beacef48-19d2-4f52-b9e8-ae3c0021f347",
+        )
+        self.assertEqual(overcast_id, 4023019428512817)
+        self.assertEqual(ep_title, "Using AI to Help Doctors Save Lives")
+        self.assertEqual(
+            feed_url,
+            "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/"
+            "32c25e85-1667-4acb-99fd-ae3c0021f33e/beacef48-19d2-4f52-b9e8-ae3c0021f347/podcast.rss",
+        )
 
     def test_extract_feed_id(self):
         itunes_data = {
@@ -73,7 +90,7 @@ class TestOvercastParser(unittest.TestCase):
             ],
         }
 
-        url = feed_url(itunes_data)
+        url = _feed_url(itunes_data)
         self.assertEqual(url, "https://feeds.megaphone.fm/theweeds")
 
     def test_find_episode(self):
