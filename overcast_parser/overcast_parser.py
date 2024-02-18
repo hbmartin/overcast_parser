@@ -1,19 +1,18 @@
-"""
-(c) 2019 Harold Martin / hbmartin released under MIT License
-"""
+# ruff: noqa: ANN001,ANN201
+
 import re
 from html.parser import HTMLParser
 
-ITUNES = re.compile(r"/itunes(\d+)/([A-Za-z0-9_-]?)")
+_ITUNES = re.compile(r"/itunes(\d+)/([A-Za-z0-9_-]?)")
 
 
-def _d(attrs):
+def _d(attrs) -> dict:
     return {a[0]: a[1] for a in attrs}
 
 
 class OvercastParser(HTMLParser):
-    def __init__(self):
-        super(OvercastParser, self).__init__()
+    def __init__(self) -> None:
+        super().__init__()
         self.itunes_id = None
         self.stream_url = None
         self.overcast_id = None
@@ -29,7 +28,7 @@ class OvercastParser(HTMLParser):
                 self.overcast_id = int(attrs_dict["content"].split("/")[-1])
         elif tag == "a":
             attrs_dict = _d(attrs)
-            result = ITUNES.match(attrs_dict["href"])
+            result = _ITUNES.match(attrs_dict["href"])
             if result:
                 self.itunes_id = int(result.group(1))
         elif tag == "div":
@@ -43,7 +42,7 @@ class OvercastParser(HTMLParser):
             self._found_title = False
 
     def close(self):
-        super(OvercastParser, self).close()
+        super().close()
 
         tmp_itunes = self.itunes_id
         tmp_stream_url = self.stream_url
@@ -59,9 +58,6 @@ class OvercastParser(HTMLParser):
         self._found_title = False
 
         return tmp_itunes, tmp_stream_url, tmp_overcast, tmp_title
-
-    def error(self, message):
-        raise Exception(message)
 
     def parse_overcast(self, data):
         self.feed(data)

@@ -1,43 +1,20 @@
-"""
-(c) 2019 Harold Martin / hbmartin released under MIT License
-"""
-
-import json
-import urllib
-
-import podcastparser
-import requests
-import appex
-import console
 import sys
+import urllib
 import webbrowser
 from urllib.parse import unquote
 
+import podcastparser
+import requests
+
 from overcast_parser import utils
-from overcast_parser import OvercastParser
-from overcast_parser.itunes_podcast_rss import extract_feed_id
-from overcast_parser.stores.Reminders import Reminders
+from overcast_parser.itunes_podcast_rss.extract import extract_feed_id
+from overcast_parser.overcast_parser import OvercastParser
 
 
-def main():
-    console.clear()
-
-    url = None
-    if appex.is_running_extension():
-        url = appex.get_url()
-    elif len(sys.argv) > 1:
-        url = unquote(sys.argv[1])
-
-    if url is None:
-        print("No URL found")
-        webbrowser.open("overcast://")
-        return
-
-    console.show_activity()
-    print(url)
+def main() -> None:
+    url = unquote(sys.argv[1])
 
     parser = OvercastParser()
-    reminders = Reminders()
 
     data = requests.get(url).text
     parser.feed(data)
@@ -63,11 +40,8 @@ def main():
         "duration": item["total_time"],
         "published_time": item["published"],
     }
+    print(result)
 
-    reminders.add(json.dumps(result))
-    print("Added to reminders")
-
-    console.hide_activity()
     webbrowser.open("overcast://")
 
 

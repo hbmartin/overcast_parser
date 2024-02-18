@@ -1,20 +1,22 @@
+# ruff: noqa: INP001,ANN001,ANN201,PTH118,PTH120,PTH123
+
 import unittest
 from os import path
-import sys
+
 import podcastparser
 
-here = path.dirname(__file__)
-sys.path.insert(0, path.join(here, ".."))
+from overcast_parser import utils
+from overcast_parser.itunes_podcast_rss.extract import feed_url
+from overcast_parser.overcast_parser import OvercastParser
 
-from overcast_parser import OvercastParser, utils
-from overcast_parser.itunes_podcast_rss import feed_url
+here = path.dirname(__file__)
 
 
 class TestOvercastParser(unittest.TestCase):
     def test_parse_overcast(self):
         parser = OvercastParser()
 
-        with open(path.join(here, "data", "overcast.htm"), "r") as f:
+        with open(path.join(here, "data", "overcast.htm")) as f:
             data = f.read()
 
         (itunes_id, stream_url, overcast_id, title) = parser.parse_overcast(data)
@@ -67,7 +69,7 @@ class TestOvercastParser(unittest.TestCase):
                         "Government & Organizations",
                         "Society & Culture",
                     ],
-                }
+                },
             ],
         }
 
@@ -75,8 +77,10 @@ class TestOvercastParser(unittest.TestCase):
         self.assertEqual(url, "https://feeds.megaphone.fm/theweeds")
 
     def test_find_episode(self):
-        feed_url = "https://feeds.megaphone.fm/theweeds"
-        podcast = podcastparser.parse(feed_url, path.join(here, "data", "theweeds.rss"))
+        podcast = podcastparser.parse(
+            url="https://feeds.megaphone.fm/theweeds",
+            stream=path.join(here, "data", "theweeds.rss"),
+        )
 
         title = "The reparations primary"
         stream_url = "https://traffic.megaphone.fm/VMP2975209749.mp3"
