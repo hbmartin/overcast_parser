@@ -29,5 +29,5 @@ jobs:
     - uses: psf/black@stable
       with:
         options: "--check --verbose"
-    - run: pyroma .
+    - run: pyroma . --min=10
     - run: python -m unittest -v tests/test.py

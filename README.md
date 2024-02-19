@@ -4,7 +4,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Code style: black](https://img.shields.io/badge/🐧️-black-000000.svg)](https://github.com/psf/black)
 [![Checked with pytype](https://img.shields.io/badge/🦆-pytype-437f30.svg)](https://google.github.io/pytype/)
-[![Versions](https://img.shields.io/pypi/pyversions/overcast-to-sqlite.svg)](https://pypi.python.org/pypi/overcast-to-sqlite)
+[![Versions](https://img.shields.io/pypi/pyversions/overcast_parser.svg)](https://pypi.python.org/pypi/overcast_parser)
 [![twitter](https://img.shields.io/badge/@hmartin-00aced.svg?logo=twitter&logoColor=black)](https://twitter.com/hmartin)
 
 Python library to obtain RSS feed URL from Overcast link, built especially for Pythonista
@@ -63,6 +63,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 * [Harold Martin](https://www.linkedin.com/in/harold-martin-98526971/) - harold.martin at gmail
 
 
-## License
+## See also
 
-[MIT](LICENSE.txt)
+[Overcast to SQLite](https://github.com/hbmartin/overcast-to-sqlite)

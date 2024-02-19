@@ -30,7 +30,7 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Typing :: Typed",
     ],
-    install_requires=["podcastparser", "requests"],
+    install_requires=["requests"],
     extras_require={
         "dev": ["black", "pythonista-stubs"],
         "lint": ["ruff", "pyroma", "pytype", "types-python-dateutil", "types-requests"],
@@ -49,4 +49,5 @@ setup(
     project_urls={
         "Bug Reports": "https://github.com/hbmartin/overcast_parser/issues",
     },
+    python_requires=">=3.10",
 )
