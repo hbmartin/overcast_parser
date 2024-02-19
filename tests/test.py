@@ -5,9 +5,8 @@ from os import path
 
 import podcastparser
 
-from overcast_parser import utils
+from overcast_parser import OvercastParser, utils
 from overcast_parser.itunes_podcast_rss.extract import _feed_url
-from overcast_parser.overcast_parser import OvercastParser
 
 here = path.dirname(__file__)
 

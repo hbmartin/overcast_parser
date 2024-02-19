@@ -9,7 +9,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="overcast_parser",
-    version="0.0.3",
+    version="0.1.0",
     description="Overcast podcast link parser especially for pythonista.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -18,7 +18,7 @@ setup(
     author_email="harold.martin@gmail.com",
     license="MIT",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Operating System :: iOS",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -28,9 +28,13 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Typing :: Typed",
     ],
     install_requires=["podcastparser", "requests"],
-    extras_require={"dev": ["black", "pythonista-stubs"]},
+    extras_require={
+        "dev": ["black", "pythonista-stubs"],
+        "lint": ["ruff", "pyroma", "pytype", "types-python-dateutil", "types-requests"],
+    },
     keywords=[
         "podcast",
         "parser",

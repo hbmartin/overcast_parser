@@ -20,29 +20,24 @@ def id_from_url(url: str) -> int:
     return int(re.findall(r"/id([0-9]+)", url)[0])
 
 
-def lookup_id(podcast_id: int) -> dict:
+def fetch_id(itunes_id: int) -> dict:
     """Look up podcast ID in iTunes lookup service."""
     s = requests.Session()
     s.mount("https://", HTTPAdapter(max_retries=3))
-    response = s.get(URL_TEMPLATE % podcast_id)
+    response = s.get(URL_TEMPLATE % itunes_id)
     return json.loads(response.content.decode("utf-8"))
 
 
-def _feed_url(itunes_lookup_response: dict) -> str:
+def _feed_url(itunes_response: dict) -> str:
     """Return feed URL from the itunes lookup response."""
-    if len(itunes_lookup_response.get("results")) == 0:
+    if len(itunes_response.get("results")) == 0:
         raise LookupError("iTunes response has no results")
-    url = itunes_lookup_response.get("results")[0].get("feedUrl")
+    url = itunes_response.get("results")[0].get("feedUrl")
     if url is None:
         raise LookupError("feedUrl field is not present in response")
     return url
 
 
-def extract_feed_id(feed_id: int) -> str:
-    response = lookup_id(feed_id)
+def extract_feed_url_for_id(itunes_id: int) -> str:
+    response = fetch_id(itunes_id)
     return _feed_url(response)
-
-
-def extract_feed_url(url: str) -> str:
-    feed_id = id_from_url(url)
-    return extract_feed_id(feed_id)

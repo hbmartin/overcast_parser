@@ -7,7 +7,7 @@ import podcastparser
 import requests
 
 from overcast_parser import utils
-from overcast_parser.itunes_podcast_rss.extract import extract_feed_id
+from overcast_parser.itunes_podcast_rss import extract_feed_url_for_id
 from overcast_parser.overcast_parser import OvercastParser
 
 
@@ -22,7 +22,7 @@ def main() -> None:
     (itunes_id, stream_url, overcast_id, title, feed_url) = parser.close()
     print(title)
 
-    feed_url = extract_feed_id(itunes_id)
+    feed_url = extract_feed_url_for_id(itunes_id)
     print(feed_url)
 
     podcast = podcastparser.parse(feed_url, urllib.request.urlopen(feed_url))
