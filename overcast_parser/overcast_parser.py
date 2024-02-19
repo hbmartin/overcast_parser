@@ -48,7 +48,7 @@ class OvercastParser(HTMLParser):
             self.ep_title = data.strip()
             self._found_title = False
 
-    def close(self) -> tuple:
+    def close(self) -> tuple:  # pytype: disable=signature-mismatch
         super().close()
 
         tmp_itunes = self.itunes_id

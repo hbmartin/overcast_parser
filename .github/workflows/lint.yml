@@ -24,7 +24,7 @@ jobs:
         if [[ '${{ steps.cpython3.outputs.python-version }}' == *"3.12"* ]]; then
           echo "pytype does not support 3.12: https://github.com/google/pytype/issues/1475"
         else
-          pytype -j auto overcast_to_sqlite
+          pytype -j auto overcast_parser
         fi
     - uses: psf/black@stable
       with:

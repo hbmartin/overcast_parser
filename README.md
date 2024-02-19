@@ -1,8 +1,11 @@
 # Overcast URL to podcast information
 [![PyPI](https://img.shields.io/pypi/v/overcast_parser.svg)](https://pypi.org/project/overcast-parser/)
-[![GitHub issues](https://img.shields.io/github/issues-raw/hbmartin/overcast_parser.svg)](https://github.com/hbmartin/overcast_parser/issues)
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Build Status](https://travis-ci.com/hbmartin/overcast_parser.svg?branch=master)](https://travis-ci.com/hbmartin/overcast_parser)
+[![Lint](https://github.com/hbmartin/overcast_parser/actions/workflows/lint.yml/badge.svg)](https://github.com/hbmartin/overcast_parser/actions/workflows/lint.yml)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Code style: black](https://img.shields.io/badge/🐧️-black-000000.svg)](https://github.com/psf/black)
+[![Checked with pytype](https://img.shields.io/badge/🦆-pytype-437f30.svg)](https://google.github.io/pytype/)
+[![Versions](https://img.shields.io/pypi/pyversions/overcast-to-sqlite.svg)](https://pypi.python.org/pypi/overcast-to-sqlite)
+[![twitter](https://img.shields.io/badge/@hmartin-00aced.svg?logo=twitter&logoColor=black)](https://twitter.com/hmartin)
 
 Python library to obtain RSS feed URL from Overcast link, built especially for Pythonista
 
@@ -54,13 +57,6 @@ pythonista3://overcast_parser/demo.py?action=run&root=icloud&args=URL Encoded Te
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-### Planned improvements
-* Better error catching, more error throwing
-
-### Code Formatting
-
-This project is linted with [pyflakes](https://github.com/PyCQA/pyflakes) and makes strict use of [Black](https://github.com/ambv/black) for code formatting.
 
 ## Authors
 
