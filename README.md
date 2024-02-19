@@ -34,7 +34,7 @@ parser = OvercastParser()
 
 data = requests.get(overcast_url).text
 
-(itunes_id, stream_url, overcast_id, title) = parser.parse_overcast(data)
+(itunes_id, stream_url, overcast_id, title, feed_url) = parser.parse_overcast(data)
 ```
 
 ## Shortcut
