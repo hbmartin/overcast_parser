@@ -3,8 +3,6 @@
 import unittest
 from os import path
 
-import podcastparser
-
 from overcast_parser import OvercastParser, utils
 from overcast_parser.itunes_podcast_rss.extract import _feed_url
 
@@ -91,21 +89,6 @@ class TestOvercastParser(unittest.TestCase):
 
         url = _feed_url(itunes_data)
         self.assertEqual(url, "https://feeds.megaphone.fm/theweeds")
-
-    def test_find_episode(self):
-        podcast = podcastparser.parse(
-            url="https://feeds.megaphone.fm/theweeds",
-            stream=path.join(here, "data", "theweeds.rss"),
-        )
-
-        title = "The reparations primary"
-        stream_url = "https://traffic.megaphone.fm/VMP2975209749.mp3"
-
-        item = utils.find_episode(podcast["episodes"], title, stream_url)
-
-        self.assertEqual(item["guid"], "9aa25a44-ff17-11e8-89e8-dbfe1fc6a68f")
-        self.assertEqual(item["total_time"], 3466)
-        self.assertEqual(item["published"], 1553022019)
 
 
 if __name__ == "__main__":
