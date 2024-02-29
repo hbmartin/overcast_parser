@@ -25,7 +25,6 @@ setup(
         "Topic :: Text Processing :: Markup :: XML",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Typing :: Typed",
@@ -49,5 +48,5 @@ setup(
     project_urls={
         "Bug Reports": "https://github.com/hbmartin/overcast_parser/issues",
     },
-    python_requires=">=3.10",
+    python_requires=">=3.11",
 )

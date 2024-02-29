@@ -3,7 +3,7 @@
 import unittest
 from os import path
 
-from overcast_parser import OvercastParser, utils
+from overcast_parser import OvercastParser
 from overcast_parser.itunes_podcast_rss.extract import _feed_url
 
 here = path.dirname(__file__)
